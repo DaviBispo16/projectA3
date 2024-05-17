@@ -18,7 +18,7 @@ public class Employee {
 		this.employmentContract = employmentContract;
 		this.grossSalary = grossSalary;
 	}
-
+	
 	public String getName() {
 		return name;
 	}
@@ -55,7 +55,13 @@ public class Employee {
 		this.grossSalary = grossSalary;
 	}
 	
-	
+	@Override
+	public String toString() {
+		StringBuilder stringbuilder = new StringBuilder();
+		
+		stringbuilder.append(getName()).append(" ").append(getEmail()).append(" ").append(employmentContract);
+		return stringbuilder.toString();
+	}
 	
 	
 }
