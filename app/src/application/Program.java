@@ -15,7 +15,20 @@ public class Program {
 		
 		List <Employee> employees = new ArrayList<>();
 		
-		
+		System.out.println("-----Controle de funcionários-----");
+		System.out.println("Menu");
+		int userChoice;
+	
+		do {
+			System.out.println("[1] Cadastrar Funcionário");
+			System.out.println("[2] Listar Funcionários");
+			System.out.println("[3] Sair");
+			
+			userChoice = sc.nextInt();
+			
+			
+			
+		} while (userChoice == 1 || userChoice == 2);
 		
 		
 
