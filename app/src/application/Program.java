@@ -15,22 +15,30 @@ public class Program {
 		
 		List <Employee> employees = new ArrayList<>();
 		
-		System.out.println("-----Controle de funcionários-----");
+		employees.add(new Employee("Felipe", "felipe@gmail.com", "123.123.123-21", "PJ", 1400.00));
+		employees.add(new Employee("Daniel", "dan@gmail.com", "113.113.123-21", "PJ", 2400.00));
+		employees.add(new Employee("Marco", "marco@gmail.com", "123.133.123-21", "CLT", 1200.00));
+		employees.add(new Employee("Silva", "silva@gmail.com", "123.153.123-21", "PJ", 1300.00));
+		employees.add(new Employee("Thiago", "thiago@gmail.com", "173.123.123-21", "CLT", 4400.00));
+		employees.add(new Employee("Gabriel", "ga@gmail.com", "123.123.143-21", "PJ", 6400.00));
+		employees.add(new Employee("Jonathan", "joan@gmail.com", "123.113.123-21", "PJ", 1400.00));
+		
+		System.out.println("---------- Controle de funcionários ---------");
 
 		int userChoice;
 	
 		do {
 			System.out.println("MENU");
 			System.out.println("[1] Cadastrar Funcionário");
-			System.out.println("[2] Listar Funcionários");
-			System.out.println("[3] Sair");
+			System.out.println("[2] Listar todos Funcionários");
+			System.out.println("[3] Listar Funcionário");
+			System.out.println("[4] Sair");
 			
 			userChoice = sc.nextInt();
 			
 			if (userChoice == 1) {
+				 System.out.println("------------------ Cadastro -----------------");
 				 System.out.println();
-				 System.out.println("-----Cadastro-----");
-				 
 				 System.out.print("Nome:");
 				 sc.nextLine(); 
 				 String name = sc.nextLine();
@@ -49,8 +57,20 @@ public class Program {
 				 Double grassSalary = sc.nextDouble();
 				 
 				 employees.add(new Employee(name, email, cpf, employmentContract, grassSalary));
-				 System.out.println("Funcionário cadastrado com sucesso!");
 				 System.out.println();
+				 System.out.println("----------- Funcionário cadastrado ----------");
+				 System.out.println();
+			}
+			
+			if (userChoice == 2) {
+				System.out.println("--------- Funcionários cadastrados ----------");
+				System.out.println();
+				System.out.println("Nome | Email | Tipo de Contrato");
+				for (Employee list : employees) {
+					System.out.println(list.toString());
+				}
+				System.out.println();
+				System.out.println("--------------------------------------------");
 			}
 			
 			
