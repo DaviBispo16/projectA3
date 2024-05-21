@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Employee;
+import enums.EmploymentContract;
 
 public class Program {
 
@@ -15,13 +16,13 @@ public class Program {
 		
 		List <Employee> employees = new ArrayList<>();
 		
-		employees.add(new Employee("Felipe", "felipe@gmail.com", "123.123.123-21", "PJ", 1400.00));
-		employees.add(new Employee("Daniel", "dan@gmail.com", "113.113.123-21", "PJ", 2400.00));
-		employees.add(new Employee("Marco", "marco@gmail.com", "123.133.123-21", "CLT", 1200.00));
-		employees.add(new Employee("Silva", "silva@gmail.com", "123.153.123-21", "PJ", 1300.00));
-		employees.add(new Employee("Thiago", "thiago@gmail.com", "173.123.123-21", "CLT", 4400.00));
-		employees.add(new Employee("Gabriel", "ga@gmail.com", "123.123.143-21", "PJ", 6400.00));
-		employees.add(new Employee("Jonathan", "joan@gmail.com", "123.113.123-21", "PJ", 1400.00));
+		employees.add(new Employee("Felipe", "felipe@gmail.com", "123.123.123-21", EmploymentContract.CLT, 1400.00));
+		employees.add(new Employee("Daniel", "dan@gmail.com", "113.113.123-21", EmploymentContract.PJ, 2400.00));
+		employees.add(new Employee("Marco", "marco@gmail.com", "123.133.123-21", EmploymentContract.PJ, 1200.00));
+		employees.add(new Employee("Silva", "silva@gmail.com", "123.153.123-21", EmploymentContract.PJ, 1300.00));
+		employees.add(new Employee("Thiago", "thiago@gmail.com", "173.123.123-21", EmploymentContract.PJ, 4400.00));
+		employees.add(new Employee("Gabriel", "ga@gmail.com", "123.123.143-21", EmploymentContract.PJ, 6400.00));
+		employees.add(new Employee("Jonathan", "joan@gmail.com", "123.113.123-21", EmploymentContract.PJ, 1400.00));
 		
 		System.out.println("---------- Controle de funcionários ---------");
 
@@ -56,7 +57,7 @@ public class Program {
 				 System.out.print("Salário Bruto:");
 				 Double grassSalary = sc.nextDouble();
 				 
-				 employees.add(new Employee(name, email, cpf, employmentContract, grassSalary));
+				 employees.add(new Employee(name, email, cpf, EmploymentContract.valueOf(employmentContract), grassSalary));
 				 System.out.println();
 				 System.out.println("----------- Funcionário cadastrado ----------");
 				 System.out.println();

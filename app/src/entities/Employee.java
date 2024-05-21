@@ -1,17 +1,19 @@
 package entities;
 
+import enums.EmploymentContract;
+
 public class Employee {
 	private String name;
 	private String email;
 	private String cpf;
-	private String employmentContract;
+	private EmploymentContract employmentContract;
 	private Double grossSalary;
 	
 	public Employee() {
 		
 	}
 
-	public Employee(String name, String email, String cpf, String employmentContract, Double grossSalary) {
+	public Employee(String name, String email, String cpf, EmploymentContract employmentContract, Double grossSalary) {
 		this.name = name;
 		this.email = email;
 		this.cpf = cpf;
@@ -39,11 +41,11 @@ public class Employee {
 		return cpf;
 	}
 
-	public String getEmploymentContract() {
+	public EmploymentContract getEmploymentContract() {
 		return employmentContract;
 	}
 
-	public void setEmploymentContract(String employmentContract) {
+	public void setEmploymentContract(EmploymentContract employmentContract) {
 		this.employmentContract = employmentContract;
 	}
 
