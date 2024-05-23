@@ -75,7 +75,7 @@ public class Program {
 		System.out.print("CPF:");
 		String cpf = sc.next();
 		 
-		System.out.print("Tipo de Contrato:");
+		System.out.print("Tipo de Contrato(CLT/PJ):");
 		sc.nextLine();
 		String employmentContract = sc.nextLine();
 		 
