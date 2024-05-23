@@ -61,7 +61,7 @@ public class Employee {
 	public String toString() {
 		StringBuilder stringbuilder = new StringBuilder();
 		
-		stringbuilder.append(getName()).append(" ").append(getEmail()).append(" ").append(employmentContract);
+		stringbuilder.append(getName()).append("  ").append(getEmail()).append("  ").append(employmentContract);
 		return stringbuilder.toString();
 	}
 	
