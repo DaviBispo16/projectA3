@@ -11,12 +11,14 @@ import exceptions.CpfInvalidFormat;
 import exceptions.IncorrectEmploymentContract;
 
 public class Program {
-
+	//Program Principal
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
+		//Instaciação da arrayList employees;
 		List <Employee> employees = new ArrayList<>();
+		
 		automaticEmployeeRegistration(employees);
 			
 		System.out.println("----------Gestão Empregados---------");
@@ -31,7 +33,7 @@ public class Program {
 			System.out.println("[3] Buscar funcionário pelo CPF");
 			System.out.println("[4] Sair");
 			userChoice = sc.nextInt();
-			
+		
 		switch(userChoice) {
 			case 1:
 			registerEmployee(sc, employees);
@@ -55,6 +57,7 @@ public class Program {
 		
 	}
 	
+	//Metódo para listar os funcionários cadastrados;
 	static void listEmployees(List<Employee> employees) {
 		System.out.println();
 		System.out.println("Nome | Email | Tipo de Contrato");
@@ -65,6 +68,7 @@ public class Program {
 		System.out.println("----------------------------------");
 	}
 	
+	//Metódo para cadastrar os funcionários;
 	static void registerEmployee(Scanner sc, List<Employee> employees) {
 		try {
 		System.out.println();
@@ -100,6 +104,7 @@ public class Program {
 		}
 	}
 	
+	//Metódo para Cadastrar 7 objetos;
 	static void automaticEmployeeRegistration(List <Employee> employees) {
 		employees.add(new Employee("Felipe", "felipe@gmail.com", "123.123.123-21", EmploymentContract.CLT, 1400.00));
 		employees.add(new Employee("Daniel", "dan@gmail.com", "113.113.123-21", EmploymentContract.PJ, 2400.00));
@@ -110,6 +115,7 @@ public class Program {
 		employees.add(new Employee("Jonathan", "joan@gmail.com", "123.113.123-21", EmploymentContract.PJ, 1400.00));
 	}
 	
+	//Metódo para buscar um funcionário cadastrado pelo CPF
 	static void searchEmployeeByCPF(Scanner sc, List<Employee> employees) {
 		System.out.print("Informe o CPF:");
 		String cpf = sc.next();
@@ -132,6 +138,7 @@ public class Program {
 		System.out.println("----------------------------------");
 	}
 	
+	//Metódo para validar o formato de um CPF do funcionário na hora do cadastro;
 	static String validateCPFFormat(String cpf) {
 		if (cpf.length() == 14 && cpf.charAt(3) == '.' && cpf.charAt(7) == '.' && cpf.charAt(11) == '-') {
 			return cpf;
@@ -140,6 +147,7 @@ public class Program {
 		}
 	}
 	
+	//Metódo para validar o tipo de contrato do funcionário na hora do cadastro;
 	static String validateEmployementContract(String employementContract) {
 		if (employementContract.equals("PJ") || employementContract.equals("CLT")) {
 			return employementContract;
@@ -148,6 +156,7 @@ public class Program {
 		}
 	}
 	
+	//Metódo para validar se o cpf do funcionário já existe na hora do cadastro;
 	static String validateEqualCPF(String cpf, List<Employee> employees) {
 		boolean flag = false;
 		for (Employee emp : employees) {
