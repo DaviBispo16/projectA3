@@ -7,6 +7,8 @@ import java.util.Scanner;
 
 import entities.Employee;
 import enums.EmploymentContract;
+import exceptions.CpfInvalidFormat;
+import exceptions.IncorrectEmploymentContract;
 
 public class Program {
 
@@ -64,6 +66,7 @@ public class Program {
 	}
 	
 	static void registerEmployee(Scanner sc, List<Employee> employees) {
+		try {
 		System.out.println();
 		System.out.print("Nome:");
 		sc.nextLine(); 
@@ -74,10 +77,13 @@ public class Program {
 		 
 		System.out.print("CPF:");
 		String cpf = sc.next();
+		validateCPFFormat(cpf);
+		validateEqualCPF(cpf, employees);
 		 
 		System.out.print("Tipo de Contrato(CLT/PJ):");
 		sc.nextLine();
-		String employmentContract = sc.nextLine();
+		String employmentContract = sc.next();
+		validateEmployementContract(employmentContract);
 		 
 		System.out.print("Salário Bruto:");
 		Double grassSalary = sc.nextDouble();
@@ -87,6 +93,11 @@ public class Program {
 		System.out.println("Funcionário cadastrado!");
 		System.out.println();
 		System.out.println("----------------------------------");
+		} catch (CpfInvalidFormat exception) {
+			System.out.println(exception.getMessage());
+		} catch (IncorrectEmploymentContract exception) {
+			System.out.println(exception.getMessage());
+		}
 	}
 	
 	static void automaticEmployeeRegistration(List <Employee> employees) {
@@ -119,6 +130,34 @@ public class Program {
 		}
 		System.out.println();
 		System.out.println("----------------------------------");
+	}
+	
+	static String validateCPFFormat(String cpf) {
+		if (cpf.length() == 14 && cpf.charAt(3) == '.' && cpf.charAt(7) == '.' && cpf.charAt(11) == '-') {
+			return cpf;
+		} else {
+			throw new CpfInvalidFormat("CPF no formato incorreto!");
+		}
+	}
+	
+	static String validateEmployementContract(String employementContract) {
+		if (employementContract.equals("PJ") || employementContract.equals("CLT")) {
+			return employementContract;
+		} else {
+			throw new IncorrectEmploymentContract("O contrato de trabalho deve ser CLT ou PJ!");
+		}
+	}
+	
+	static String validateEqualCPF(String cpf, List<Employee> employees) {
+		boolean flag = false;
+		for (Employee emp : employees) {
+			if (emp.getCpf().equals(cpf)) {
+				flag = true;
+				throw new CpfInvalidFormat("CPF já cadastrado!");
+			}
+		}
+		
+		return cpf;
 	}
 
 }
