@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.List;
+
 import enums.EmploymentContract;
 //Classe Empregados;
 public class Employee {
@@ -7,18 +9,16 @@ public class Employee {
 	private String email;
 	private String cpf;
 	private EmploymentContract employmentContract;
-	private Double grossSalary;
 	//Construtor sem Parâmetros;
 	public Employee() {
 		
 	}
 	//Construtor com Parâmetros;
-	public Employee(String name, String email, String cpf, EmploymentContract employmentContract, Double grossSalary) {
+	public Employee(String name, String email, String cpf, EmploymentContract employmentContract) {
 		this.name = name;
 		this.email = email;
 		this.cpf = cpf;
 		this.employmentContract = employmentContract;
-		this.grossSalary = grossSalary;
 	}
 	//Getters e Setters dos atributos da classe Employee;
 	public String getName() {
@@ -48,23 +48,14 @@ public class Employee {
 	public void setEmploymentContract(EmploymentContract employmentContract) {
 		this.employmentContract = employmentContract;
 	}
-
-	public Double getGrossSalary() {
-		return grossSalary;
-	}
-
-	public void setGrossSalary(Double grossSalary) {
-		this.grossSalary = grossSalary;
-	}
 	
 	// Metódo toString
 	@Override
 	public String toString() {
 		StringBuilder stringbuilder = new StringBuilder();
 		
-		stringbuilder.append(getName()).append("  ").append(getEmail()).append("  ").append(employmentContract);
+		stringbuilder.append(getName()).append("  ").append(getEmail()).append("  ").append(employmentContract).append("  ").append(cpf);
 		return stringbuilder.toString();
 	}
-	
 	
 }
