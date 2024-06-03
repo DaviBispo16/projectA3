@@ -4,13 +4,13 @@ import enums.EmploymentContract;
 
 public class Estagio extends Employee{
 	private Double assistanceTransportation;
-	private Double aidGrant;
+	private Double traineeGrant;
 	
 	public Estagio(String name, String email, String cpf, EmploymentContract employmentContract,
 			Double assistanceTransportation, Double aidGrant) {
 		super(name, email, cpf, employmentContract);
 		this.assistanceTransportation = assistanceTransportation;
-		this.aidGrant = aidGrant;
+		this.traineeGrant = aidGrant;
 	}
 
 	public Double getAssistanceTransportation() {
@@ -21,16 +21,16 @@ public class Estagio extends Employee{
 		this.assistanceTransportation = assistanceTransportation;
 	}
 
-	public Double getAidGrant() {
-		return aidGrant;
+	public Double getTraineeGrant() {
+		return traineeGrant;
 	}
 
-	public void setAidGrant(Double aidGrant) {
-		this.aidGrant = aidGrant;
+	public void setTraineeGrant(Double traineeGrant) {
+		this.traineeGrant = traineeGrant;
 	}
 	
 	public Double netSalary() {
-		return assistanceTransportation+aidGrant;
+		return assistanceTransportation+traineeGrant;
 	}
 	
 }

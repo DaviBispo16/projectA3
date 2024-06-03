@@ -1,27 +1,23 @@
 package application;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 
+import entities.Clt;
 import entities.Employee;
+import entities.Estagio;
 import enums.EmploymentContract;
-import exceptions.CpfInvalidFormat;
-import exceptions.IncorrectEmploymentContract;
-import services.FieldValidations;
-import services.EmployeeService;
+import services.EmployeeManagement;
 
 public class Program {
-	//Program Principal
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		//Instaciação da arrayList employees;
 		List <Employee> employees = new ArrayList<>();
-		EmployeeService employeeService = new EmployeeService();
+		EmployeeManagement employeeService = new EmployeeManagement();
 		
 		automaticEmployeeRegistration(employees);
 			
@@ -34,9 +30,10 @@ public class Program {
 			System.out.println("MENU");
 			System.out.println("[1] Cadastrar Funcionário");
 			System.out.println("[2] Listar todos Funcionários");
-			System.out.println("[3] Procurar funcionário por CPF");
-			System.out.println("[4] Excluir Funcionário");
-			System.out.println("[5] Sair");
+			System.out.println("[3] Procurar funcionário");
+			System.out.println("[4] Atualizar Funcionário");
+			System.out.println("[5] Excluir Funcionário");
+			System.out.println("[6] Sair");
 			userChoice = sc.nextInt();
 		
 		switch(userChoice) {
@@ -49,8 +46,13 @@ public class Program {
 			case 3: 
 				employeeService.searchEmployeeByCPF(sc, employees);
 				break;
-
 			case 4:
+				employeeService.updateEmployee(sc, employees);
+				break;
+			case 5: 
+				employeeService.removeEmployee(sc, employees);
+				break;
+			case 6:
 				System.out.println("Saindo...");
 				break;
 			default:
@@ -58,19 +60,19 @@ public class Program {
 				break;
 		}
 				
-		} while (userChoice != 4);
+		} while (userChoice != 6);
 		
 		
 	}
 	
 		static void automaticEmployeeRegistration(List <Employee> employees) {
-			employees.add(new Employee("Felipe", "felipe@gmail.com", "123.123.123-21", EmploymentContract.CLT));
-			employees.add(new Employee("Daniel", "dan@gmail.com", "113.113.123-21", EmploymentContract.ESTAGIO));
-			employees.add(new Employee("Marco", "marco@gmail.com", "123.133.123-21", EmploymentContract.ESTAGIO));
-			employees.add(new Employee("Silva", "silva@gmail.com", "123.153.123-21", EmploymentContract.CLT));
-			employees.add(new Employee("Thiago", "thiago@gmail.com", "173.123.123-21", EmploymentContract.ESTAGIO));
-			employees.add(new Employee("Gabriel", "ga@gmail.com", "123.123.143-21", EmploymentContract.CLT));
-			employees.add(new Employee("Jonathan", "joan@gmail.com", "123.113.123-21", EmploymentContract.CLT));
+			employees.add(new Clt("Felipe", "felipe@gmail.com", "123.123.123-21", EmploymentContract.CLT, 250.00, 250.00));
+			employees.add(new Clt("Daniel", "dan@gmail.com", "113.113.123-21", EmploymentContract.ESTAGIO, 500.00, 400.00));
+			employees.add(new Estagio("Marco", "marco@gmail.com", "123.133.123-21", EmploymentContract.ESTAGIO, 400.00, 400.00));
+			employees.add(new Clt("Silva", "silva@gmail.com", "123.153.123-21", EmploymentContract.CLT, 400.00, 400.00));
+			employees.add(new Estagio("Thiago", "thiago@gmail.com", "173.123.123-21", EmploymentContract.ESTAGIO, 400.00, 400.00));
+			employees.add(new Clt("Gabriel", "ga@gmail.com", "123.123.143-21", EmploymentContract.CLT, 120.00, 120.00));
+			employees.add(new Estagio("Jonathan", "joan@gmail.com", "123.113.123-21", EmploymentContract.CLT, 345.00, 450.00));
 		}
 	
 	

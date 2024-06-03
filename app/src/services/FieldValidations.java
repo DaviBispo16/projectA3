@@ -17,10 +17,10 @@ public class FieldValidations {
 	}
 	
 	public String validateEmployementContract(String employementContract) {
-		if (employementContract.equals("PJ") || employementContract.equals("CLT")) {
+		if (employementContract.equals("ESTAGIO") || employementContract.equals("CLT")) {
 			return employementContract;
 		} else {
-			throw new IncorrectEmploymentContract("O contrato de trabalho deve ser CLT ou PJ!");
+			throw new IncorrectEmploymentContract("O contrato de trabalho deve ser CLT ou ESTAGIO!");
 		}
 	}
 	
