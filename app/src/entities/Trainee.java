@@ -2,11 +2,11 @@ package entities;
 
 import enums.EmploymentContract;
 
-public class Estagio extends Employee{
+public class Trainee extends Employee{
 	private Double assistanceTransportation;
 	private Double traineeGrant;
 	
-	public Estagio(String name, String email, String cpf, EmploymentContract employmentContract,
+	public Trainee(String name, String email, String cpf, EmploymentContract employmentContract,
 			Double assistanceTransportation, Double aidGrant) {
 		super(name, email, cpf, employmentContract);
 		this.assistanceTransportation = assistanceTransportation;
@@ -32,5 +32,10 @@ public class Estagio extends Employee{
 	public Double netSalary() {
 		return assistanceTransportation+traineeGrant;
 	}
+	
+	public Double grossSalary() {
+		return assistanceTransportation + traineeGrant;
+	}
+	
 	
 }

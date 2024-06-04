@@ -1,11 +1,13 @@
 package services;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
 import entities.Clt;
 import entities.Employee;
-import entities.Estagio;
+import entities.Trainee;
 import enums.EmploymentContract;
 import exceptions.CpfInvalidFormat;
 import exceptions.IncorrectEmploymentContract;
@@ -41,7 +43,7 @@ public class EmployeeManagement {
 		 
 		System.out.print("Tipo de Contrato(CLT/ESTAGIO):");
 		sc.nextLine();
-		String employmentContract = sc.next();
+		String employmentContract = sc.next().toUpperCase();
 		fieldValidations.validateEmployementContract(employmentContract);
 		
 		if (employmentContract.equals("CLT")) {
@@ -51,7 +53,10 @@ public class EmployeeManagement {
 			System.out.print("Valor vale-alimentação:");
 			Double foodVouchers = sc.nextDouble();
 			
-			employee = new Clt(name, email, cpf, EmploymentContract.valueOf(employmentContract), assistanceTransportation, foodVouchers);
+			System.out.print("Valor do salário liquido?");
+			Double netSalary = sc.nextDouble();
+			
+			employee = new Clt(name, email, cpf, EmploymentContract.valueOf(employmentContract), assistanceTransportation, foodVouchers, netSalary);
 			
 		} 
 		
@@ -62,7 +67,7 @@ public class EmployeeManagement {
 			System.out.print("Valor bolsa-estágio:");
 			Double traineeGrant = sc.nextDouble();
 			
-			employee = new Estagio(name, email, cpf, EmploymentContract.valueOf(employmentContract), assistanceTransportation, traineeGrant);
+			employee = new Trainee(name, email, cpf, EmploymentContract.valueOf(employmentContract), assistanceTransportation, traineeGrant);
 		}
 		 
 		 
@@ -120,12 +125,14 @@ public class EmployeeManagement {
 					
 					System.out.print("Tipo de Contrato(CLT/ESTAGIO):");
 					sc.nextLine();
-					String employmentContract = sc.next();
+					String employmentContract = sc.next().toUpperCase();
 					fieldValidations.validateEmployementContract(employmentContract);
 					
-					emp.setName(name);
-					emp.setEmail(email);
-					emp.setEmploymentContract(EmploymentContract.valueOf(employmentContract));
+					employeeToBeUpdated.setName(name);
+					employeeToBeUpdated.setEmail(email);
+					employeeToBeUpdated.setEmploymentContract(EmploymentContract.valueOf(employmentContract));
+					
+					
 					
 					System.out.println("Funcionário atualizado!");
 					
@@ -152,9 +159,16 @@ public class EmployeeManagement {
 		
 		for (Employee emp : employees) {
 			if (emp.getCpf().equalsIgnoreCase(cpf)) {
-				employeeToBeRemove = emp;
+				System.out.print("Tem certeza que vai excluir o funcionário com CPF: " + cpf + "?");
+				String removalDecision = sc.next().toLowerCase();
 				
-				System.out.println("Funcionário removido!");
+				
+				if (removalDecision.equals("sim")) {
+					employeeToBeRemove = emp; 
+					System.out.println("Funcionário removido!");
+				} else {
+					break;
+				}
 			}
 		}
 		
@@ -165,6 +179,42 @@ public class EmployeeManagement {
 		}
 		System.out.println();
 		System.out.println("----------------------------------");
+	}
+	
+	public void showSalary(Scanner sc, List<Employee> employees) {
+		System.out.print("Informe o CPF:");
+		String cpf = sc.next();
+		Employee getSalary = null;
+		
+		for (Employee emp : employees) {
+			if (emp.getCpf().equals(cpf)) {
+				getSalary = emp;
+			}
+		}
+		
+		if (getSalary != null) {
+			System.out.println("O salário total é R$ " + getSalary.grossSalary());
+		} else {
+			System.out.println("Funcionário não encontrado!");
+		}
+	}
+	
+	public void orderByNameAscending(Scanner sc, List<Employee> employees) {
+		List<Employee> orderByName = new ArrayList<Employee>(employees);
+		
+		Collections.sort(orderByName);
+		
+		System.out.println();
+		System.out.println("Nome | Email | Tipo de Contrato | CPF");
+		for (Employee list : orderByName) {
+			System.out.println(list.toString());
+		}
+		System.out.println();
+		System.out.println("----------------------------------");
+		
+		orderByName.removeAll(orderByName);
+		
+		
 	}
 	
 	

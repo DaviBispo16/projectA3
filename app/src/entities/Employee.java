@@ -4,7 +4,7 @@ import java.util.List;
 
 import enums.EmploymentContract;
 //Classe Empregados;
-public abstract class Employee {
+public abstract class Employee implements Comparable<Employee>{
 	private String name;
 	private String email;
 	private String cpf;
@@ -47,6 +47,12 @@ public abstract class Employee {
 
 	public void setEmploymentContract(EmploymentContract employmentContract) {
 		this.employmentContract = employmentContract;
+	}
+	
+	public abstract Double grossSalary();
+	
+	public int compareTo(Employee e) {
+		return name.compareTo(e.getName());
 	}
 	
 	
