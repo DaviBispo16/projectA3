@@ -59,6 +59,19 @@ public class Clt extends Employee{
 		
 	}
 
+	@Override
+	public void getPayRoll() {
+		System.out.println("Resumo do Funcionário: " + name);
+		System.out.println("Email: " + email);
+		System.out.println("CPF: " + cpf);
+		System.out.println("Tipo de Contrato: " + cpf);
+		System.out.println("Auxílio Transporte: " + String.format("%.2f", assistanceTransportation));
+		System.out.println("Vale Alimentação: " + String.format("%.2f", foodVouchers));
+		System.out.println("Salário Bruto: " + String.format("%.2f", netSalary));
+//		System.out.println("Salário Liquido: " + (assistanceTransportation + foodVouchers + netSalary);
+		
+	}
+
 	
 	
 	

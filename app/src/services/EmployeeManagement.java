@@ -2,6 +2,7 @@ package services;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -31,7 +32,7 @@ public class EmployeeManagement {
 		System.out.println();
 		System.out.print("Nome:");
 		sc.nextLine(); 
-		String name = sc.nextLine();
+		String name = sc.nextLine().trim();
 		 
 		System.out.print("Email:");
 		String email = sc.next();
@@ -118,7 +119,7 @@ public class EmployeeManagement {
 					System.out.println();
 					System.out.print("Nome:");
 					sc.nextLine(); 
-					String name = sc.nextLine();
+					String name = sc.nextLine().trim();
 					
 					System.out.print("Email:");
 					String email = sc.next();
@@ -181,41 +182,49 @@ public class EmployeeManagement {
 		System.out.println("----------------------------------");
 	}
 	
-	public void showSalary(Scanner sc, List<Employee> employees) {
-		System.out.print("Informe o CPF:");
-		String cpf = sc.next();
-		Employee getSalary = null;
-		
-		for (Employee emp : employees) {
-			if (emp.getCpf().equals(cpf)) {
-				getSalary = emp;
-			}
-		}
-		
-		if (getSalary != null) {
-			System.out.println("O salário total é R$ " + getSalary.grossSalary());
-		} else {
-			System.out.println("Funcionário não encontrado!");
-		}
-	}
+//	public void showSalary(Scanner sc, List<Employee> employees) {
+//		System.out.print("Informe o CPF:");
+//		String cpf = sc.next();
+//		Employee getSalary = null;
+//		
+//		for (Employee emp : employees) {
+//			if (emp.getCpf().equals(cpf)) {
+//				getSalary = emp;
+//			}
+//		}
+//		
+//		if (getSalary != null) {
+//			System.out.println("O salário total é R$ " + getSalary.grossSalary());
+//		} else {
+//			System.out.println("Funcionário não encontrado!");
+//		}
+//	}
 	
-	public void orderByNameAscending(Scanner sc, List<Employee> employees) {
-		List<Employee> orderByName = new ArrayList<Employee>(employees);
+	public void orderByNameAscending(List<Employee> employees) {
 		
-		Collections.sort(orderByName);
+		Collections.sort(employees);
 		
 		System.out.println();
 		System.out.println("Nome | Email | Tipo de Contrato | CPF");
-		for (Employee list : orderByName) {
+		for (Employee list : employees) {
 			System.out.println(list.toString());
 		}
 		System.out.println();
 		System.out.println("----------------------------------");
-		
-		orderByName.removeAll(orderByName);
-		
-		
+				
 	}
+	
+	public void getResume(Scanner sc, List <Employee> employees) {
+		System.out.print("Informe o CPF:");
+		String cpf = sc.next();
+		
+		for (Employee emp : employees) {
+			if (emp.getCpf().equals(cpf)) {
+				emp.getPayRoll();
+			}
+		}
+	}
+	
 	
 	
 	

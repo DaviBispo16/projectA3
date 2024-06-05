@@ -39,8 +39,7 @@ public class Program {
 				employeeService.listEmployees(employees);
 				break;	
 			case 3: 
-				employeeService.orderByNameAscending(sc, employees);
-				//Todo: Listar por nome funcionar!
+				employeeService.orderByNameAscending(employees);
 				break;
 			case 4:
 				employeeService.searchEmployeeByCPF(sc, employees);
@@ -52,13 +51,17 @@ public class Program {
 				employeeService.removeEmployee(sc, employees);
 				break;
 			case 7:
+				employeeService.getResume(sc, employees);
+				break;
+			case 8:
 				System.out.println("Saindo...");
+				break;
 			default:
 				System.out.println("Opção inválida!");
 				break;
 		}
 				
-		} while (userChoice != 8);
+		} while (userChoice != 9);
 		
 		
 	}

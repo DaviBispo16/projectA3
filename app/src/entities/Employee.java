@@ -1,14 +1,15 @@
 package entities;
 
+import java.util.Comparator;
 import java.util.List;
 
 import enums.EmploymentContract;
 //Classe Empregados;
 public abstract class Employee implements Comparable<Employee>{
-	private String name;
-	private String email;
-	private String cpf;
-	private EmploymentContract employmentContract;
+	protected String name;
+	protected String email;
+	protected String cpf;
+	protected EmploymentContract employmentContract;
 	
 	public Employee() {
 		
@@ -64,4 +65,7 @@ public abstract class Employee implements Comparable<Employee>{
 		return stringbuilder.toString();
 	}
 	
+	public abstract void getPayRoll(); 
+	
 }
+

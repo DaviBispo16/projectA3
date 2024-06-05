@@ -14,6 +14,7 @@ public class Menu {
 		System.out.println("[4] Procurar funcionário");
 		System.out.println("[5] Atualizar Funcionário");
 		System.out.println("[6] Excluir Funcionário");
-		System.out.println("[7] Sair");
+		System.out.println("[7] Resumo");
+		System.out.println("[8] Sair");
 	}
 }

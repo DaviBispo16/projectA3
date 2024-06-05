@@ -7,10 +7,10 @@ public class Trainee extends Employee{
 	private Double traineeGrant;
 	
 	public Trainee(String name, String email, String cpf, EmploymentContract employmentContract,
-			Double assistanceTransportation, Double aidGrant) {
+			Double assistanceTransportation, Double traineeGrant) {
 		super(name, email, cpf, employmentContract);
 		this.assistanceTransportation = assistanceTransportation;
-		this.traineeGrant = aidGrant;
+		this.traineeGrant = traineeGrant;
 	}
 
 	public Double getAssistanceTransportation() {
@@ -33,9 +33,24 @@ public class Trainee extends Employee{
 		return assistanceTransportation+traineeGrant;
 	}
 	
-	public Double grossSalary() {
-		return assistanceTransportation + traineeGrant;
+
+	@Override
+	public void getPayRoll() {
+		System.out.println("Resumo do funcionário: " + name);
+		System.out.println("Email: " + email);
+		System.out.println("CPF: " + cpf);
+		System.out.println("Tipo de contrato: " + cpf);
+		System.out.println("Auxílio Transporte: " + String.format("%.2f", assistanceTransportation));
+		System.out.println("Bolsa Auxílio: " + String.format("%.2f", traineeGrant));
+		System.out.println("Salário liquido: " + String.format("%.2f", netSalary()));
 	}
+
+	@Override
+	public Double grossSalary() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 	
 }
