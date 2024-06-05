@@ -12,7 +12,7 @@ public class FieldValidations {
 		if (cpf.length() == 14 && cpf.charAt(3) == '.' && cpf.charAt(7) == '.' && cpf.charAt(11) == '-') {
 			return cpf;
 		} else {
-			throw new CpfInvalidFormat("CPF no formato incorreto!");
+			throw new CpfInvalidFormat("CPF no formato incorreto! Formato correto: 123.456.789-10");
 		}
 	}
 	

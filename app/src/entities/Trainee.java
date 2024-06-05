@@ -44,13 +44,5 @@ public class Trainee extends Employee{
 		System.out.println("Bolsa Auxílio: " + String.format("%.2f", traineeGrant));
 		System.out.println("Salário liquido: " + String.format("%.2f", netSalary()));
 	}
-
-	@Override
-	public Double grossSalary() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
-	
+		
 }

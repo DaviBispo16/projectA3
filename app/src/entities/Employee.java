@@ -1,10 +1,6 @@
 package entities;
 
-import java.util.Comparator;
-import java.util.List;
-
 import enums.EmploymentContract;
-//Classe Empregados;
 public abstract class Employee implements Comparable<Employee>{
 	protected String name;
 	protected String email;
@@ -50,7 +46,7 @@ public abstract class Employee implements Comparable<Employee>{
 		this.employmentContract = employmentContract;
 	}
 	
-	public abstract Double grossSalary();
+	public abstract Double netSalary();
 	
 	public int compareTo(Employee e) {
 		return name.compareTo(e.getName());

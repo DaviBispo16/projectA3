@@ -61,19 +61,19 @@ public class Program {
 				break;
 		}
 				
-		} while (userChoice != 9);
+		} while (userChoice != 8);
 		
 		
 	}
 	
 		static void automaticEmployeeRegistration(List <Employee> employees) {
-			employees.add(new Clt("Felipe", "felipe@gmail.com", "123.123.123-21", EmploymentContract.CLT, 250.00, 250.00, 1678.00));
-			employees.add(new Clt("Daniel", "dan@gmail.com", "113.113.123-21", EmploymentContract.ESTAGIO, 500.00, 400.00, 1000.00));
-			employees.add(new Trainee("Marco", "marco@gmail.com", "123.133.123-21", EmploymentContract.ESTAGIO, 400.00, 400.00));
-			employees.add(new Clt("Silva", "silva@gmail.com", "123.153.123-21", EmploymentContract.CLT, 400.00, 400.00, 1000.00));
-			employees.add(new Trainee("Thiago", "thiago@gmail.com", "173.123.123-21", EmploymentContract.ESTAGIO, 400.00, 400.00));
-			employees.add(new Clt("Gabriel", "ga@gmail.com", "123.123.143-21", EmploymentContract.CLT, 120.00, 120.00, 1000.00));
-			employees.add(new Trainee("Jonathan", "joan@gmail.com", "123.113.123-21", EmploymentContract.CLT, 345.00, 450.00));
+			employees.add(new Clt("Augusto", "augusto@gmail.com", "123.123.123-21", EmploymentContract.CLT, 250.00, 250.00, 1400.00));
+			employees.add(new Clt("Joana", "joana2@gmail.com", "113.113.123-71", EmploymentContract.CLT, 280.00, 200.00, 1500.00));
+			employees.add(new Trainee("Guilherme", "guilherme@gmail.com", "723.173.183-45", EmploymentContract.ESTAGIO, 200.00, 600.00));
+			employees.add(new Clt("Davi", "davi233@gmail.com", "118.173.128-21", EmploymentContract.CLT, 280.00, 300.00, 2500.00));
+			employees.add(new Trainee("João", "joaosantana123@hotmail.com", "123.173.124-97", EmploymentContract.ESTAGIO, 100.00, 500.00));
+			employees.add(new Clt("Gabriel", "gabriel3@gmail.com", "623.183.243-43", EmploymentContract.CLT, 120.00, 120.00, 1412.00));
+			employees.add(new Trainee("Felipe", "felipe@hotmail.com", "183.113.123-35", EmploymentContract.ESTAGIO, 345.00, 900.00));
 		}
 	
 	

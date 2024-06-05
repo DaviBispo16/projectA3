@@ -12,6 +12,7 @@ import entities.Trainee;
 import enums.EmploymentContract;
 import exceptions.CpfInvalidFormat;
 import exceptions.IncorrectEmploymentContract;
+import exceptions.IncorrectMinimumWage;
 
 public class EmployeeManagement {
 	
@@ -54,10 +55,16 @@ public class EmployeeManagement {
 			System.out.print("Valor vale-alimentação:");
 			Double foodVouchers = sc.nextDouble();
 			
-			System.out.print("Valor do salário liquido?");
-			Double netSalary = sc.nextDouble();
+			System.out.print("Valor do salário bruto:");
+			Double grossSalary = sc.nextDouble();
 			
-			employee = new Clt(name, email, cpf, EmploymentContract.valueOf(employmentContract), assistanceTransportation, foodVouchers, netSalary);
+			if (grossSalary < 1412.00) {
+				throw new IncorrectEmploymentContract("O valor do salário bruto mínimo deve ser maior que R$ 1412.00");
+			} else {
+				employee = new Clt(name, email, cpf, EmploymentContract.valueOf(employmentContract), assistanceTransportation, foodVouchers, grossSalary);
+			}
+			
+//			employee = new Clt(name, email, cpf, EmploymentContract.valueOf(employmentContract), assistanceTransportation, foodVouchers, grossSalary);
 			
 		} 
 		
@@ -77,10 +84,12 @@ public class EmployeeManagement {
 		System.out.println("Funcionário cadastrado!");
 		System.out.println();
 		System.out.println("----------------------------------");
-		} catch (CpfInvalidFormat exception) {
-			System.out.println(exception.getMessage());
-		} catch (IncorrectEmploymentContract exception) {
-			System.out.println(exception.getMessage());
+		} catch (CpfInvalidFormat exceptionCpf) {
+			System.out.println(exceptionCpf.getMessage());
+		} catch (IncorrectEmploymentContract exceptionEmployeeContract) {
+			System.out.println(exceptionEmployeeContract.getMessage());
+		} catch (IncorrectMinimumWage exceptionWage) {
+			System.out.println(exceptionWage.getMessage());
 		}
 	}
 	
@@ -182,24 +191,6 @@ public class EmployeeManagement {
 		System.out.println("----------------------------------");
 	}
 	
-//	public void showSalary(Scanner sc, List<Employee> employees) {
-//		System.out.print("Informe o CPF:");
-//		String cpf = sc.next();
-//		Employee getSalary = null;
-//		
-//		for (Employee emp : employees) {
-//			if (emp.getCpf().equals(cpf)) {
-//				getSalary = emp;
-//			}
-//		}
-//		
-//		if (getSalary != null) {
-//			System.out.println("O salário total é R$ " + getSalary.grossSalary());
-//		} else {
-//			System.out.println("Funcionário não encontrado!");
-//		}
-//	}
-	
 	public void orderByNameAscending(List<Employee> employees) {
 		
 		Collections.sort(employees);
@@ -223,6 +214,8 @@ public class EmployeeManagement {
 				emp.getPayRoll();
 			}
 		}
+		System.out.println();
+		System.out.println("----------------------------------");
 	}
 	
 	

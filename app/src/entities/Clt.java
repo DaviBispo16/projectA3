@@ -1,18 +1,19 @@
 package entities;
 
 import enums.EmploymentContract;
+import exceptions.IncorrectMinimumWage;
 
 public class Clt extends Employee{
 	private Double assistanceTransportation;
 	private Double foodVouchers;
-	private Double netSalary;
+	private Double grossSalary;
 	
 	public Clt(String name, String email, String cpf, EmploymentContract employmentContract,
-			Double assistanceTransportation, Double foodVouchers, Double netSalary) {
+			Double assistanceTransportation, Double foodVouchers, Double grossSalary) {
 		super(name, email, cpf, employmentContract);
 		this.assistanceTransportation = assistanceTransportation;
 		this.foodVouchers = foodVouchers;
-		this.netSalary = netSalary;
+		this.grossSalary = grossSalary;
 	}
 
 	public Double getAssistanceTransportation() {
@@ -31,44 +32,58 @@ public class Clt extends Employee{
 		this.foodVouchers = foodVouchers;
 	}
 
-	public Double getNetSalary() {
-		return netSalary;
+	public Double getGrossSalary() {
+		return grossSalary;
 	}
 
-	public void setNetSalary(Double netSalary) {
-		this.netSalary = netSalary;
+	public void setGrossSalary(Double grossSalary) {
+		this.grossSalary = grossSalary;
 	}
 	
-	public Double grossSalary() {
+	public Double netSalary() {
 		Double inss = 0.0;
-
-		if (netSalary < 1412.00) {
-			throw new RuntimeException("Salário deve ser maior!");
-		} else if (netSalary == 1412.00) {
-			return netSalary - (netSalary * 0.075);
-		} else if (netSalary > 1412.00 && netSalary <= 2.666) {
-			return netSalary - (netSalary * 0.09);
-		} else if (netSalary > 2.666 && netSalary <= 4.000) {
-			return netSalary - (netSalary * 0.12);
-		} else if (netSalary <= 7087.22) {
-			return netSalary - (netSalary * 0.14);
+		
+		if (grossSalary == 1412.00) {
+			inss = grossSalary * 0.075;
+		} else if (grossSalary > 1412.00 && grossSalary <= 2666.68) {
+			inss = grossSalary * 0.09;
+		} else if (grossSalary > 2666.68 && grossSalary < 4000.00) {
+			inss = grossSalary * 0.12;
 		} else {
-			return 99.99;
+			inss = grossSalary * 0.14;
 		}
-	
+		
+		return grossSalary - inss;
 		
 	}
+	
+	public Double aliquotInss() {
+		Double aliquot = 0.0;
+		if (grossSalary == 1412.00) {
+			aliquot = 7.5;
+		} else if (grossSalary > 1412.00 && grossSalary <= 2666.68) {
+			aliquot = 9.0;
+		} else if (grossSalary > 2666.68 && grossSalary < 4000.00) {
+			aliquot = 12.0;
+		} else {
+			aliquot = 14.0;
+		}
+		
+		return aliquot;
+	}
+	
 
 	@Override
 	public void getPayRoll() {
 		System.out.println("Resumo do Funcionário: " + name);
 		System.out.println("Email: " + email);
 		System.out.println("CPF: " + cpf);
-		System.out.println("Tipo de Contrato: " + cpf);
+		System.out.println("Tipo de Contrato: " + employmentContract);
 		System.out.println("Auxílio Transporte: " + String.format("%.2f", assistanceTransportation));
 		System.out.println("Vale Alimentação: " + String.format("%.2f", foodVouchers));
-		System.out.println("Salário Bruto: " + String.format("%.2f", netSalary));
-//		System.out.println("Salário Liquido: " + (assistanceTransportation + foodVouchers + netSalary);
+		System.out.println("Salário Bruto: " + String.format("%.2f", grossSalary));
+		System.out.println("Alíquota INSS: " + String.format("%.2f", aliquotInss()) + "%");
+		System.out.println("Salário Liquido: " + String.format("%.2f", netSalary()));
 		
 	}
 
