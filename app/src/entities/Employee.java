@@ -48,10 +48,10 @@ public abstract class Employee implements Comparable<Employee>{
 	
 	public abstract Double netSalary();
 	
+	// Metódo implementado da interface Comparable para ordenar o nome dos funcionários em ordem alfabética
 	public int compareTo(Employee e) {
 		return name.compareTo(e.getName());
 	}
-	
 	
 	@Override
 	public String toString() {

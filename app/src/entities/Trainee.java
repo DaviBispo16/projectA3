@@ -29,17 +29,18 @@ public class Trainee extends Employee{
 		this.traineeGrant = traineeGrant;
 	}
 	
+	// Metódo para calcular o salário líquido do funcionário
 	public Double netSalary() {
 		return assistanceTransportation+traineeGrant;
 	}
 	
-
+	// Metódo para detalhar os dados do funcionário
 	@Override
 	public void getPayRoll() {
 		System.out.println("Resumo do funcionário: " + name);
 		System.out.println("Email: " + email);
 		System.out.println("CPF: " + cpf);
-		System.out.println("Tipo de contrato: " + cpf);
+		System.out.println("Tipo de contrato: " + employmentContract);
 		System.out.println("Auxílio Transporte: " + String.format("%.2f", assistanceTransportation));
 		System.out.println("Bolsa Auxílio: " + String.format("%.2f", traineeGrant));
 		System.out.println("Salário liquido: " + String.format("%.2f", netSalary()));

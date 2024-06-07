@@ -54,7 +54,7 @@ public class Program {
 				employeeService.getResume(sc, employees);
 				break;
 			case 8:
-				System.out.println("Saindo...");
+				menu.printMenuFinal();
 				break;
 			default:
 				System.out.println("Opção inválida!");
@@ -65,7 +65,7 @@ public class Program {
 		
 		
 	}
-	
+		// Metódo para criação automática de 7 objetos da classe Funcionário
 		static void automaticEmployeeRegistration(List <Employee> employees) {
 			employees.add(new Clt("Augusto", "augusto@gmail.com", "123.123.123-21", EmploymentContract.CLT, 250.00, 250.00, 1400.00));
 			employees.add(new Clt("Joana", "joana2@gmail.com", "113.113.123-71", EmploymentContract.CLT, 280.00, 200.00, 1500.00));

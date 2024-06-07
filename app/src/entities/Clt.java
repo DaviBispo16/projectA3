@@ -40,6 +40,7 @@ public class Clt extends Employee{
 		this.grossSalary = grossSalary;
 	}
 	
+	// Metódo para calcular o salário líquido do funcionário
 	public Double netSalary() {
 		Double inss = 0.0;
 		
@@ -57,6 +58,7 @@ public class Clt extends Employee{
 		
 	}
 	
+	// Metódo para calcular o valor da aliquota INSS do funcionário
 	public Double aliquotInss() {
 		Double aliquot = 0.0;
 		if (grossSalary == 1412.00) {
@@ -72,7 +74,7 @@ public class Clt extends Employee{
 		return aliquot;
 	}
 	
-
+	// Metódo para detalhar todos os dados do funcionário
 	@Override
 	public void getPayRoll() {
 		System.out.println("Resumo do Funcionário: " + name);
